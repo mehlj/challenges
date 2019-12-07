@@ -1,4 +1,8 @@
-def balance(string):
+def balance(string: str) -> str:
+    """
+
+    @rtype: bool
+    """
     num_x = 0
     num_y = 0
 
@@ -16,5 +20,6 @@ def balance(string):
     else:
         print("String is NOT balanced, number of x's and y's are NOT equal!")
         return False
+
 
 balance("xxxyyyy")
