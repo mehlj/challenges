@@ -2,13 +2,13 @@
 
 A number's additive persistence is the number of additions required to obtain a single digit from a number ``n``. That last digit obtained is called the digital root.
 
-For example, given the starting number of 9876:
+For example, given the starting number of ``9876``:
 ```
-9 + 8 + 7 + 6 = **30**
-3 + 0 = **3**
+9 + 8 + 7 + 6 = 30
+3 + 0 = 3
 ```
 
-We went through **two** rounds of addition, so the additive persistence is **two**. The last digit obtained was **three**, and thus, the digital root is **three**.
+We went through ``2`` rounds of addition, so the additive persistence is ``2``. The last digit obtained was ``3``, and thus, the digital root is ``3``.
 
 Weisstein, Eric W. "Additive Persistence." From MathWorld--A Wolfram Web Resource. http://mathworld.wolfram.com/AdditivePersistence.html
 
