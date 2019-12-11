@@ -17,4 +17,5 @@ Weisstein, Eric W. "Additive Persistence." From MathWorld--A Wolfram Web Resourc
 This Python program, from a high level, does a few things:
 * Accepts user input in the form of a standard integer
 * Splits the input integer into a list[] of digits
-* Performs the mathematics above by calculating the sum of digits, determining if there are more than one digits, and looping if so. 
+* Performs the mathematics above by calculating the sum of digits, determining if there are more than one digits, and looping if so 
+* Returns the additive persistence of the user-provided integer
