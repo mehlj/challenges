@@ -5,13 +5,17 @@ import os
 
 def convert_time_verbal(hour, minute):
     """
-    Accept time as an arg and print out verbal statement
+    Accepts time as an arg and prints out verbal statement.
+    Also verbalizes the statement using text-to-speech
+    
     Ex: convert_time_verbal(01,30) --> It's one thirty am
-    @param hour:
-    @param minute:
+    
+    @param hour: two-digit int, 00-24
+    @param minute: two-digit int, 00-60
     @return: alarm clock string
     """
 
+    # determine AM vs PM
     if int(hour) >= 12:
         suffix = "p m"
         hour = int(hour) - 12       # do not follow 24 hour format verbally (i.e, 14:00 PM = 2:00 PM)
@@ -36,9 +40,11 @@ def convert_time_verbal(hour, minute):
     else:
         alarm_text = "It's " + num2words(hour) + " " + suffix
 
+    # play audio
     alarm_voice = gTTS(text=alarm_text, lang='en', slow=False)
     alarm_voice.save("alarm.mp3")
     os.system("start alarm.mp3")
+    
     return alarm_text
 
 
