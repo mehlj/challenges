@@ -4,7 +4,7 @@ def balance(string: str) -> str:
     match the amount of "y" chars
     Ex: balance("xxxyyy") -> True
     Ex: balance("xxxxyyy") -> False
-    
+
     @param str: String of various x and y chars
     @return: bool (if the string is balanced or not)
     """
