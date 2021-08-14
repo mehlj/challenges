@@ -23,7 +23,7 @@ def plus_minus(integers):
 
     print(round(decimal.Decimal(len(positives) / len(integers)),6))
     print(round(decimal.Decimal(len(negatives) / len(integers)),6))
-    print(round(decimal.Decimal(len(zeroes) / len(integers)),6))
+    print(round(decimal.Decimal(len(zeroes)    / len(integers)),6))
 
 
 if __name__ == '__main__':
