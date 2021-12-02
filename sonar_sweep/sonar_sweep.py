@@ -1,11 +1,11 @@
-
+#!/usr/bin/env python3
 
 """ Authentication is required for grabbing puzzle input
 #import requests
 #def get_http_puzzle_input():
-#	url = "https://adventofcode.com/2021/day/1/input"
-#	file = requests.get(url)
-#	print(file.text)
+# url = "https://adventofcode.com/2021/day/1/input"
+# file = requests.get(url)
+# print(file.text)
 """
 
 
@@ -22,9 +22,15 @@ def solve():
     num_increases = 0
 
     for i in range(len(input_list)):
-        if (input_list[i] > input_list[i-1]) and (i != 0):
-            print("Increase at index: " + str(i) + ", from " + str(input_list[i-1]) + " to " + str(input_list[i]))
-            num_increases += 1
+        try:
+            sum_a = input_list[i] + input_list[i+1] + input_list[i+2]
+            sum_b = input_list[i+1] + input_list[i+2] + input_list[i+3]
+
+            if sum_a < sum_b:
+                print("Increase at index: " + str(i) + ", from " + str(sum_a) + " to " + str(sum_b))
+                num_increases += 1
+        except IndexError:
+            pass
 
     return num_increases
 
