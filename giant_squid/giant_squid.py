@@ -121,49 +121,45 @@ def solve_last_board():
     score = 0
     drawing_numbers = get_drawing_numbers()
     boards = get_boards()
-
-    boards_copy = boards
+    winning_boards = []
 
     for num in drawing_numbers:
         print("checking number " + str(num))
-        for board in boards_copy:
+        for board in boards:
             for row in board:
                 for i, val in enumerate(row):
-                    #print("comparing board number " + str(row[i]) + " to " + str(num))
                     if row[i] == num:
                         # mark that number by zeroing out that value
-                        #print("Match! of board number " + str(row[i]) + " to " + str(num))
                         row[i] = 0
 
                         # issue is: after a winner is determined, the rest of the boards don't get the row[i] = 0
                         # after a winning board is seen, it just checks the rest of THAT board, and moves to next num
                         # it needs to check the other boards as well
+                        # I believe the issue is related to the fact that we are removing from boards[], while
+                        # iterating on it
 
                         # call check_winner_col() to determine if this row wins vertically
                         if check_winner_col(board):
                             print("Winning number: " + str(num))
-                            if len(boards) == 1:
-                                print("on last board, col")
-                                unmarked_sum = calc_unmarked_sum(board)
-                                score = unmarked_sum * num
-                                return score
-                            boards.remove(board)
+                            unmarked_sum = calc_unmarked_sum(board)
+                            score = unmarked_sum * num
+                            print("Score of this board is: " + str(score))
+                            winning_boards.append(board)
 
                         # call check_winner_row() to determine if this row wins horizontally
                         if check_winner_row(board):
                             print("Winning number: " + str(num))
-                            if len(boards) == 1:
-                                print("on last board, row")
-                                print(board)
-                                unmarked_sum = calc_unmarked_sum(board)
-                                score = unmarked_sum * num
-                                return score
-                            boards.remove(board)
+                            unmarked_sum = calc_unmarked_sum(board)
+                            score = unmarked_sum * num
+                            print("Score of this board is: " + str(score))
+                            winning_boards.append(board)
 
+                        if len(winning_boards) == 99:
+                            print("99 winning boards. this is the last winning board: ")
+                            print(board)
+                            return score
 
-    print(boards)
     return score
 
 
 print(solve_last_board())
-#print(solve())
