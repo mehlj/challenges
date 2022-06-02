@@ -97,7 +97,6 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
     nxt := l1.Next
     
     for i := 0; i <= ctr; i++ {
-        //fmt.Println(nxt)
         if nxt != nil {
             l1List = append(l1List, nxt.Val)
             nxt = nxt.Next // increment nxt
@@ -112,7 +111,6 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
     nxt = l2.Next
     
     for i := 0; i <= ctr; i++ {
-        //fmt.Println(nxt)
         if nxt != nil {
             l2List = append(l2List, nxt.Val)
             nxt = nxt.Next // increment nxt
@@ -120,10 +118,6 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
             break
         }
 	}
-
-    fmt.Println(l1List)
-    fmt.Println(l2List)
-
 
     // reverse both lists
     revl1List := []int{}
@@ -145,47 +139,27 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
     var_int1 := strToInt(str_int1)
     var_int2 := strToInt(str_int2)
     var_int_sum := big.NewInt(0).Add(var_int1, var_int2)
-    fmt.Println(var_int_sum)
     
     // check is sum is zero and return if so
     if var_int_sum == big.NewInt(0) {
         return &ListNode{Val: 0, Next: nil}
     }
-    
-    
-//    fmt.Println(sliceToInt(revl1List))
-//    fmt.Println(sliceToInt(revl2List))
-//    lSum := (sliceToInt(revl1List)) + (sliceToInt(revl2List))
-//    fmt.Println(lSum)
-    
+        
     // convert big.Int back to String for later iteration
     var_str_sum := var_int_sum.String()
     
     // reverse string
     var_str_sum_rev := reverseString(var_str_sum)
-        
-    //lSumSlice := []int64{}
-    //lSumSlice = intToSlice(var_int_sum, lSumSlice)
-    //fmt.Println(lSumSlice)
-    
+            
     // build linked lists
     solution := linkedList{}
     
     for index, character := range var_str_sum_rev {
         fmt.Printf("Start Index: %d Value:%s\n", index, string(character))
-        sliceNode := &ListNode{Val: int(character - '0')}                              // ISSUE HERE: int(character is getting the ASCII code? and not the real value)
+        sliceNode := &ListNode{Val: int(character - '0')}
         solution.PushBack(sliceNode)
     } 
     
-    
-    // build linked lists    
-    
-   // for i := range lSumSlice {
-   //     sliceNode := &ListNode{Val: int(lSumSlice[i])}
-   //     solution.PushBack(sliceNode)
-//  }
-    
-
     solution.Display()
     return solution.head
 }
